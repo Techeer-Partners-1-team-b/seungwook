@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest
-@Transactional
+@Transactional // 이로 인해 자동 롤백됨
 class MemberServiceIntegrationTest {
 
     @Autowired MemberService memberService;
@@ -23,6 +23,7 @@ class MemberServiceIntegrationTest {
 
 
     @Test
+    // @Commit // 이를 통해 실제 DB 반영 가능. 즉 롤백 안되게
     void 회원가입() {
         // given
         Member member = new Member();
